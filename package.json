@@ -6,19 +6,31 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint 'pages/**/*.js' 'components/**/*.js' 'lib/**/*.js' --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint 'pages/**/*.js' 'components/**/*.js' 'lib/**/*.js' --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
+    "@chakra-ui/next-js": "^2.2.0",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "framer-motion": "^11.3.29",
+    "next": "14.2.6",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.6"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.6"
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.6",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "typescript": "^5"
   }
 }
