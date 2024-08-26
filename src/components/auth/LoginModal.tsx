@@ -6,19 +6,16 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
-  ModalFooter,
   Button,
   Input,
-  useDisclosure,
   FormControl,
   FormLabel,
   Text,
   VStack,
-  Icon,
-  HStack,
   Divider,
   useBreakpointValue,
 } from '@chakra-ui/react';
+
 import { apiPost } from '@/utils/api';
 // import FcGoogle from '@/components/icons/Logo'; // For Google Icon
 
@@ -42,7 +39,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
       const response = await apiPost(
         '/login/send-otp',
         { mobile: mobileNumber },
-        false,
+        false
       );
       setSuccessMessage('OTP sent successfully!');
     } catch (error) {

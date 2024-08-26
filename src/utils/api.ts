@@ -1,4 +1,5 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { isAxiosError,AxiosRequestConfig, AxiosResponse } from 'axios';
+
 import { getCookie, deleteCookie } from './cookies';
 import { BASE_URL, BEARER_TOKEN as DEFAULT_AUTH_TOKEN } from './constant'; // Import the default token
 
@@ -26,14 +27,14 @@ export const apiGet = async <T>(endpoint: string, useToken: boolean = true): Pro
     const response: AxiosResponse<T> = await axios.get(endpoint, config);
     return response.data;
   } catch (error) {
-    if (axios.isAxiosError(error) && error.response?.status === 401) {
+    if (isAxiosError(error) && error.response?.status === 401) {
       handleUnauthorized();
     }
     throw error;
   }
 };
 
-export const apiPost = async <T>(endpoint: string, data?: any, useToken: boolean = true): Promise<T> => {
+export const apiPost = async <T, D = unknown>(endpoint: string, data?: D, useToken: boolean = true): Promise<T> => {
   const config: AxiosRequestConfig = {
     baseURL: BASE_URL,
     headers: {
@@ -61,12 +62,13 @@ export const apiPost = async <T>(endpoint: string, data?: any, useToken: boolean
     const response: AxiosResponse<T> = await axios.post(endpoint, data, config);
     return response.data;
   } catch (error) {
-    if (axios.isAxiosError(error) && error.response?.status === 401) {
+    if (isAxiosError(error) && error.response?.status === 401) {
       handleUnauthorized();
     }
     throw error;
   }
 };
+
 
 const handleUnauthorized = (): void => {
   deleteCookie('authToken');

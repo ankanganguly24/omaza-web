@@ -176,7 +176,7 @@ const Button = defineStyleConfig({
   }),
   variants: {
     solid: ({ colorMode, colorScheme }) => {
-      let bgColor = 'brand.400';
+      let bgColor =  colorMode === 'dark' ? 'brand.400' : 'brand.400'
       if (colorScheme === 'success') bgColor = 'success.500';
       if (colorScheme === 'error') bgColor = 'error.500';
 

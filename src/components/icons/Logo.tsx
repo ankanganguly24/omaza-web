@@ -27,7 +27,7 @@ const Logo = (props: SVGProps<SVGSVGElement>) => (
           <feFuncA type="table" tableValues="1.0 0.0" />
         </feComponentTransfer>
       </filter>
-      <mask id="mask" mask-type="alpha">
+      <mask id="mask">
         <g filter="url(#fade)">
           <path
             fill="#201E1D"

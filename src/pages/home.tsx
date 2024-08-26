@@ -9,8 +9,8 @@ import {
   Flex,
   SimpleGrid,
   Icon,
-  VStack,
 } from '@chakra-ui/react';
+
 import {
   Streamer,
   useFetchStreamers,
@@ -31,7 +31,7 @@ const Home: React.FC = () => {
   const observerRef = useInfiniteScroll(
     fetchNextPage,
     hasNextPage!,
-    isFetchingNextPage,
+    isFetchingNextPage
   );
 
   // Determine the status based on priority

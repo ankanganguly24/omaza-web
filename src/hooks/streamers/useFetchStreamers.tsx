@@ -1,5 +1,6 @@
-import { apiGet } from '@/utils/api';
 import { QueryFunctionContext, useInfiniteQuery } from '@tanstack/react-query';
+
+import { apiGet } from '@/utils/api';
 
 export type Streamer = {
   id: number;

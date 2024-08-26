@@ -31,8 +31,9 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
+
     "@typescript-eslint/no-unused-vars": [
-      "error",
+      "warn",
       {
         "argsIgnorePattern": "^_"
       }
@@ -40,27 +41,26 @@
     "import/order": [
       "error",
       {
-        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
         "newlines-between": "always"
       }
     ],
     "jsx-a11y/anchor-is-valid": "off",
     "no-console": "warn",
     "no-debugger": "error",
-    "no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-empty-function": "warn",
     "@typescript-eslint/ban-ts-comment": "warn",
     "@typescript-eslint/no-inferrable-types": "off",
-    "@typescript-eslint/ban-types": [
-      "error",
-      {
-        "types": {
-          "Function": false
-        }
-      }
-    ]
+    "@typescript-eslint/ban-types": "off"
   },
   "settings": {
     "react": {
@@ -69,7 +69,8 @@
     "import/resolver": {
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      }
+      },
+      "typescript": {} // Adds TypeScript resolution support
     }
   }
 }

@@ -1,15 +1,7 @@
-'use client';
 import { motion } from 'framer-motion';
-import {
-  Box,
-  Button,
-  Heading,
-  Text,
-  Image,
-  Grid,
-  GridItem,
-} from '@chakra-ui/react';
+import { Button, Heading, Text, Grid, GridItem } from '@chakra-ui/react';
 import React, { useState } from 'react';
+
 import Logo from '@/components/icons/Logo';
 import LoginModal from '@/components/auth/LoginModal';
 
@@ -42,21 +34,21 @@ export default function Landing() {
   };
 
   // Animation variants for the second section
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-        damping: 10,
-        duration: 1.5,
-        delay: i * 0.3, // Stagger effect
-        ease: 'easeInOut',
-      },
-    }),
-  };
+  // const itemVariants = {
+  //   hidden: { opacity: 0, y: 50 },
+  //   visible: (i: number) => ({
+  //     opacity: 1,
+  //     y: 0,
+  //     transition: {
+  //       type: 'spring',
+  //       stiffness: 100,
+  //       damping: 10,
+  //       duration: 1.5,
+  //       delay: i * 0.3, // Stagger effect
+  //       ease: 'easeInOut',
+  //     },
+  //   }),
+  // };
 
   return (
     <Grid maxW="100vw">
