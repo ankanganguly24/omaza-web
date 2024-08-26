@@ -17,7 +17,7 @@ import {
 
 // Theme configuration
 const config: ThemeConfig = {
-  initialColorMode: 'system',
+  initialColorMode: 'light',
   useSystemColorMode: true,
 };
 
