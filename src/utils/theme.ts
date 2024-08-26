@@ -200,6 +200,35 @@ const Button = defineStyleConfig({
   },
 });
 
+const Input = defineStyleConfig({
+  baseStyle: {
+    field: {
+      fontWeight: "bold",
+    },
+  },
+  variants: {
+    outline: {
+      field: {
+        border: "2px solid",
+        borderColor: "gray.300", // Default border color
+        _hover: {
+          borderColor: "brand.400", // Color when hovering over the input
+        },
+        _focus: {
+          borderColor: "brand.400", // Brand color on focus
+          boxShadow: `0 0 0 1px #ff7e3e`, // Focus ring effect
+        },
+        _focusVisible: {
+          borderColor: 'brand.400', // Ensures brand color on focus-visible
+          boxShadow: `0 0 0 1px #ff7e3e`, // Focus ring effect
+        },
+      },
+    },
+  },
+});
+
+
+
 const Alert = createMultiStyleConfigHelpers(
   alertAnatomy.keys
 ).defineMultiStyleConfig({
@@ -253,11 +282,7 @@ const components = {
       focusBorderColor: 'brand.200',
     },
   },
-  Input: {
-    baseStyle: {
-      focusBorderColor: 'brand.200',
-    },
-  },
+  Input, // Ensure Input is correctly added here
   Textarea: {
     baseStyle: {
       focusBorderColor: 'brand.200',

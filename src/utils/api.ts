@@ -1,9 +1,6 @@
-// utils/apiUtils.ts
-
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { getCookie, deleteCookie } from './cookies';
-import { BASE_URL } from './constant';
-
+import { BASE_URL, BEARER_TOKEN as DEFAULT_AUTH_TOKEN } from './constant'; // Import the default token
 
 export const apiGet = async <T>(endpoint: string, useToken: boolean = true): Promise<T> => {
   const config: AxiosRequestConfig = {
@@ -11,7 +8,11 @@ export const apiGet = async <T>(endpoint: string, useToken: boolean = true): Pro
   };
 
   if (useToken) {
-    const token = getCookie('authToken');
+    let token = getCookie('authToken');
+    if (!token) {
+      token = DEFAULT_AUTH_TOKEN; // Fallback to default token
+    }
+
     if (token) {
       config.headers = {
         Authorization: `Bearer ${token}`,
@@ -41,7 +42,11 @@ export const apiPost = async <T>(endpoint: string, data?: any, useToken: boolean
   };
 
   if (useToken) {
-    const token = getCookie('authToken');
+    let token = getCookie('authToken');
+    if (!token) {
+      token = DEFAULT_AUTH_TOKEN; // Fallback to default token
+    }
+
     if (token) {
       config.headers = {
         ...config.headers,

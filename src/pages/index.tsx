@@ -9,16 +9,26 @@ import {
   Grid,
   GridItem,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from '@/components/icons/Logo';
+import LoginModal from '@/components/auth/LoginModal';
 
 export default function Landing() {
+  const [isLoginModalOpen, setLoginModalOpen] = useState<boolean>(false);
+
+  const handleJoinNowClick = () => {
+    setLoginModalOpen(true);
+  };
+
+  const closeLoginModal = () => {
+    setLoginModalOpen(false);
+  };
   // Animation variants for the first section
   const pyramidVariants = {
     hidden: { opacity: 0, x: -100, y: 0 },
     visible: (i: number) => ({
       opacity: 1,
-      x: 10,
+      x: 5,
       y: [-60, -40, 60, -80, 100, 0], // Creating the "A" shape
       transition: {
         type: 'spring',
@@ -50,12 +60,13 @@ export default function Landing() {
 
   return (
     <Grid maxW="100vw">
+      <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
       <GridItem colSpan={2} h={{ base: '150', md: '200' }} w="100">
         <Logo />
       </GridItem>
       <GridItem
         colSpan={{ base: 6, md: 3 }}
-        px={{ base: 1, md: 36 }}
+        px={{ base: 0.5, md: 36 }}
         display="flex"
         flexDirection={{ base: 'column', lg: 'row' }}
         alignItems="center"
@@ -99,6 +110,7 @@ export default function Landing() {
               rounded="lg"
               py={{ base: 4, md: 8 }}
               px={{ base: 4, md: 8 }}
+              onClick={handleJoinNowClick}
             >
               Join now
             </Button>
