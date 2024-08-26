@@ -17,8 +17,10 @@ import {
 } from '@/hooks/streamers/useFetchStreamers';
 import { useInfiniteScroll } from '@/hooks/util/useInfiniteScroll';
 import Language from '@/components/icons/Language'; // Importing the Language icon
+import { useRouter } from 'next/router';
 
 const Home: React.FC = () => {
+  const router = useRouter();
   const {
     data,
     fetchNextPage,
@@ -56,6 +58,10 @@ const Home: React.FC = () => {
         <Text>Error: {(error as Error).message}</Text>
       </Box>
     );
+
+  const handleClick = (streamer: Streamer) => {
+    router.push(`/streamer/${streamer.id}`);
+  };
 
   // Render the list of streamers with infinite scroll
   return (
@@ -126,7 +132,12 @@ const Home: React.FC = () => {
                   <Button colorScheme="orange" size="sm">
                     Talk Now
                   </Button>
-                  <Button variant="outline" size="sm" colorScheme="gray">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    colorScheme="gray"
+                    onClick={() => handleClick(streamer)}
+                  >
                     View Profile
                   </Button>
                 </HStack>

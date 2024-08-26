@@ -176,18 +176,33 @@ const Button = defineStyleConfig({
   }),
   variants: {
     solid: ({ colorMode, colorScheme }) => {
-      let bgColor =  colorMode === 'dark' ? 'brand.400' : 'brand.400'
-      if (colorScheme === 'success') bgColor = 'success.500';
-      if (colorScheme === 'error') bgColor = 'error.500';
+      let bgColor;
+
+      // Force default colorScheme if none is provided
+      if (!colorScheme || colorScheme === 'gray') {
+        colorScheme = 'brand';
+      }
+
+      if (colorScheme === 'success') {
+        bgColor = 'success.500';
+      } else if (colorScheme === 'error') {
+        bgColor = 'error.500';
+      } else {
+        bgColor = `${colorScheme}.400`;
+      }
+
+      console.log('colorMode:', colorMode);
+      console.log('colorScheme:', colorScheme);
+      console.log('bgColor:', bgColor);
 
       return {
         bg: bgColor,
         color: 'white',
         _hover: {
-          bg: `${bgColor}.600`,
+          bg: `${bgColor.split('.')[0]}.600`,
         },
         _active: {
-          bg: `${bgColor}.700`,
+          bg: `${bgColor.split('.')[0]}.700`,
         },
       };
     },
@@ -199,6 +214,8 @@ const Button = defineStyleConfig({
     },
   },
 });
+
+
 
 const Input = defineStyleConfig({
   baseStyle: {
