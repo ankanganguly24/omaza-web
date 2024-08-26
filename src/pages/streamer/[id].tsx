@@ -67,11 +67,18 @@ const StreamerDetailsPage: React.FC = () => {
     return <Text>No details found for this streamer.</Text>;
   }
 
-  const statusColor = data.busy
-    ? 'yellow.400'
-    : data.online
-    ? 'green.400'
-    : 'red.400';
+  const getStatus = (streamer: StreamerDetails) => {
+    if (streamer.busy) return 'Busy';
+    if (streamer.online) return 'Online';
+    return 'Offline';
+  };
+
+  const statusColorScheme =
+    getStatus(data) === 'Busy'
+      ? 'yellow'
+      : getStatus(data) === 'Online'
+      ? 'green'
+      : 'red';
 
   return (
     <Box
@@ -101,12 +108,12 @@ const StreamerDetailsPage: React.FC = () => {
                 {data.name}
               </Text>
               <Badge
-                colorScheme="pink"
+                colorScheme={statusColorScheme}
                 borderRadius="full"
                 px={2}
                 fontSize="sm"
               >
-                {data.online ? 'Online' : 'Offline'}
+                {getStatus(data)}
               </Badge>
             </HStack>
             <HStack spacing={2}>
