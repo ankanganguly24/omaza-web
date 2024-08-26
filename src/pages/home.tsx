@@ -10,6 +10,7 @@ import {
   SimpleGrid,
   Icon,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
 import {
   Streamer,
@@ -17,7 +18,6 @@ import {
 } from '@/hooks/streamers/useFetchStreamers';
 import { useInfiniteScroll } from '@/hooks/util/useInfiniteScroll';
 import Language from '@/components/icons/Language'; // Importing the Language icon
-import { useRouter } from 'next/router';
 
 const Home: React.FC = () => {
   const router = useRouter();

@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint 'pages/**/*.js' 'components/**/*.js' 'lib/**/*.js' --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint 'pages/**/*.js' 'components/**/*.js' 'lib/**/*.js' --ext .js,.jsx,.ts,.tsx --fix"
+    "lint": "eslint \"src/pages/**/*.{ts,tsx}\" \"src/components/**/*.{ts,tsx}\" \"src/hooks/**/*.{ts,tsx}\" \"src/utils/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"src/pages/**/*.{ts,tsx}\" \"src/components/**/*.{ts,tsx}\" \"src/hooks/**/*.{ts,tsx}\" \"src/utils/**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
     "@chakra-ui/next-js": "^2.2.0",

@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
-import { apiGet } from '@/utils/api';
 import {
   Box,
   Image,
@@ -16,6 +15,8 @@ import {
 } from '@chakra-ui/react';
 import { FaWhatsapp, FaHeart } from 'react-icons/fa';
 import { MdLocationOn } from 'react-icons/md';
+
+import { apiGet } from '@/utils/api';
 import Language from '@/components/icons/Language';
 
 // Define a type that represents the structure of the data
