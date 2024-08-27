@@ -4,12 +4,16 @@ import React, { useState } from 'react';
 
 import Logo from '@/components/icons/Logo';
 import LoginModal from '@/components/auth/LoginModal';
+import { useRouter } from 'next/router';
 
 export default function Landing() {
   const [isLoginModalOpen, setLoginModalOpen] = useState<boolean>(false);
+  const router = useRouter();
 
   const handleJoinNowClick = () => {
-    setLoginModalOpen(true);
+    // setLoginModalOpen(true);
+
+    router.push(`/home`);
   };
 
   const closeLoginModal = () => {
