@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import { Button, Heading, Text, Grid, GridItem } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
 import Logo from '@/components/icons/Logo';
 import LoginModal from '@/components/auth/LoginModal';
-import { useRouter } from 'next/router';
 
 export default function Landing() {
   const [isLoginModalOpen, setLoginModalOpen] = useState<boolean>(false);
