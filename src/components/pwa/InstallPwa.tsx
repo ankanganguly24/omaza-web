@@ -24,26 +24,30 @@ const InstallPWA: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   useEffect(() => {
-    const handleBeforeInstallPrompt = (e: Event) => {
-      e.preventDefault();
-      setDeferredPrompt(e as BeforeInstallPromptEvent);
-      if (isMobile) {
-        onOpen();
-      }
-    };
+    // Ensure this code only runs in the browser
+    if (typeof window !== 'undefined') {
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      const handleBeforeInstallPrompt = (e: Event) => {
+        e.preventDefault();
+        setDeferredPrompt(e as BeforeInstallPromptEvent);
+        if (isMobile) {
+          onOpen();
+        }
+      };
 
-    return () => {
-      window.removeEventListener(
-        'beforeinstallprompt',
-        handleBeforeInstallPrompt
-      );
-    };
-  }, [isMobile, onOpen]);
+      window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+      return () => {
+        window.removeEventListener(
+          'beforeinstallprompt',
+          handleBeforeInstallPrompt
+        );
+      };
+    }
+  }, [onOpen]);
 
   const handleInstallClick = () => {
     if (deferredPrompt) {
