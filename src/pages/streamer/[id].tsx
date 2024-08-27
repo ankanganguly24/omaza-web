@@ -242,6 +242,7 @@ const StreamerDetailsPage: React.FC = () => {
                     ) : (
                       <video controls>
                         <source src={item.url} type="video/mp4" />
+                        <track kind="captions" style={{ display: 'none' }} />
                       </video>
                     )}
                   </Box>
