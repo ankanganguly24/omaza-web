@@ -191,10 +191,6 @@ const Button = defineStyleConfig({
         bgColor = `${colorScheme}.400`;
       }
 
-      console.log('colorMode:', colorMode);
-      console.log('colorScheme:', colorScheme);
-      console.log('bgColor:', bgColor);
-
       return {
         bg: bgColor,
         color: 'white',
