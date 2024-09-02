@@ -26,9 +26,9 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 // Define props interface if needed (empty for now, but useful for future extensions)
-interface InstallPWAProps {}
+// interface InstallPWAProps {}
 
-const InstallPWA: React.FC<InstallPWAProps> = () => {
+const InstallPWA: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
   const [isIOS, setIsIOS] = useState<boolean>(false);
@@ -104,13 +104,13 @@ const InstallPWA: React.FC<InstallPWAProps> = () => {
           <VStack spacing={4} align="center">
             <Icon as={MdInstallMobile} w={12} h={12} color="orange.400" />
             <Text textAlign="center">
-              Install the "To Be Honest" app for a better experience on your
+              Install the To Be Honest app for a better experience on your
               mobile device.
             </Text>
             {isIOS && (
               <Text fontSize="sm" color="gray.500">
-                To install, tap the share button in Safari and then "Add to Home
-                Screen".
+                To install, tap the share button in Safari and then Add to Home
+                Screen.
               </Text>
             )}
           </VStack>
